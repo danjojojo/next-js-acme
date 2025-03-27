@@ -1,0 +1,69 @@
+NEXT JS DASHBOARD
+
+Chap 2
+
+TAILWIND
+    - Tailwind CSS is used in the project
+    - The directives below are written inside the /app/ui/globals.css
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+    
+    - Then in layout.tsx, the globals.css is imported
+    - Having the globals.css imported at the top-level like in layout.tsx allows all components within the project to use Tailwind's utility classes
+    - For example of Tailwind:
+        <h1 className="text-blue-500">I'm blue!</h1>
+        --> This code makes the h1 "I'm blue!" in color blue.
+    - Having Tailwind CSS in the project allows developers to don't worry on maintaining CSS files and style collisions
+
+
+
+
+CSS MODULES
+    - CSS modules can be also created to scope a certain style to a component
+    - Like in traditional CSS naming, class names must be unique within the stylesheet
+    - To create a CSS module, add <any_name>.module.css inside the /app/ui folder
+    - For example:
+        home.module.css
+        --> Contains
+            .shape{
+                height: 0;
+                width: 0;
+                border-bottom: 30px solid black;
+                border-left: 20px solid transparent;
+                border-right: 20px solid transparent;
+            }
+    - To use it:
+        in a .tsx file,
+        --> Contains
+            import styles from '@/app/ui/home.module.css'
+
+            // code
+            <div className={styles.shape}></div>
+            // code 
+
+
+
+
+CLSX
+    - To apply CSS classes according to specific conditions, use CLSX library
+    - If not installed, run npm i --save clsx
+    - For example:
+        in a .tsx file,
+        --> Contains
+            import clsx from 'clsx'
+
+            // code
+            <span
+                className={
+                    clsx('<some tailwind utility class>'{
+                        // make the background and text into grey when status is pending
+                        'bg-gray-100 text-gray-500' : status === 'pending',
+                        // make the background green and text into white when status is paid
+                        'bg-green-500 text-white' : status === 'paid',
+                    },
+                )}
+            >
+            // code
+
+        

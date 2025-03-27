@@ -1,0 +1,68 @@
+NEXT.JS DASHBOARD
+
+Chap 1
+
+PREREQUISITES
+    - Install a package manager in the project
+    --> npm install -g pnpm
+
+
+
+
+FOLDER STRUCTURE
+    - /app folder 
+        --> all routes, components, logic
+    - /app/lib    
+        --> reusable functions, data fetching functions
+    - /app/ui     
+        --> UI components, fonts
+    - /public     
+        --> static assets such as images
+
+Note: Next.js uses Typescript
+
+
+
+
+PLACEHOLDER DATA
+    - Use placeholder data as alternative for database data
+    - Can be found in /app/lib folder
+    - Sample sources:
+        --> JSON 
+        --> MockAPI
+        --> Prisma
+    - In placeholder-data.ts, each Javascript object represents a table in the database 
+    - For example:
+        const invoices = [
+            {
+                customer_id: customer[0].id,
+                amount: 9999,
+                status: 'pending,
+                date: '2021-01-01'
+            },
+            {...}
+        ];
+
+    + DEFINITION OF TYPES
+        - In Typescript, we can define the types that will be returned from the database
+        - For example:
+            export const Invoice = {
+                id: string;
+                customer_id: string;
+                amount: number;
+                status: 'pending' | 'paid';
+                date: string;
+            };
+        - This is done to ensure that we don't accidentally pass wrong data format to components, like passing
+          a string to 'Amount' instead of a number.
+
+
+
+
+RUNNING THE DEVELOPMENT SERVER
+    - Run pnpm i in the project folder
+    - Run pnpm dev
+
+
+
+    

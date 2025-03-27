@@ -1,0 +1,19 @@
+NEXT JS DASHBOARD
+
+Chap 4
+
+ROUTING AND NESTED ROUTING
+    - The app/dashboard/invoices is relative to website.com/dashboard/invoices
+    - The app/page.tsx is important when creating routes, and each route can have their own layout.tsx and page.tsx
+    - For example:
+        --> app/
+                page.tsx            --> this is equal to /
+                dashboard/
+                    page.tsx        --> this is equal to /dashboard
+
+
+
+
+LAYOUT
+    - Creating a layout.tsx in the /app folder allows nested routes to share the same layout
+    - This is also uses the feature of Next.js which is partial rendering, which means the app layout doesnt need to be re-rendered when accessing routes

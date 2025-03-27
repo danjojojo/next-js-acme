@@ -1,0 +1,68 @@
+NEXT JS DASHBOARD
+
+Chap 3
+
+FONT AND IMAGE OPTIMIZATION
+    - Next.js downloads fonts at build and hosts them together with other static assets
+    - To use this feature, make sure to use the next/font module
+
+ADD A PRIMARY FONT
+    - In /app/ui folder, create a new file called fonts.ts
+    - Then import the Inter font from the next/font/google
+    - For example:
+        --> in app/ui/fonts.ts, 
+                import { Inter } from 'next/font/google'
+
+                export const inter = Inter({ subsets: ['latin'] });
+
+        --> then in app/layout.tsx
+                import { inter } from '@/app/ui/fonts';
+
+                // code
+                <>
+                    <body className={`${inter.className} antialiased`}>{children}</body>
+                </>
+                // The antialiased just makes the font smooth
+
+ADD A SECONDARY FONT
+    - Same procedure as ADD A PRIMARY FONT
+    - For example:
+        --> in app/ui/fonts.ts,
+                import { Inter, Lusitana } from 'next/font/google'
+
+                export const inter = Inter({ subsets: ['latin'] });
+                export const lusitana = Lusitana({
+                    subsets: ['latin'],
+                    weight: ['400', '700']
+                })
+
+        --> then in app/page.tsx
+                import { lusitana } from '@/app/ui/fonts'
+
+                // code
+                <p className={`${lusitana.className}`}>
+                    Some text
+                </p>
+
+                // This will apply the Lusitana font in 'Some text' but the Inter font is still used in other components
+
+ADD AN IMAGE
+    - First, save the image files inside the public folder
+    - Then to add then image, import first the Image component from next/image
+    - For example:
+        --> in app/page.tsx
+            import Image from 'next/image'
+
+            // code
+            <Image
+                src="/image.png"
+                height={<some number>}
+                width={<some number>}
+                className="<some CSS class>"
+                alt="image description"
+            />
+
+            // code
+
+
+            

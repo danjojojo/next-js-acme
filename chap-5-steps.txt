@@ -1,0 +1,60 @@
+NEXT JS DASHBOARD
+
+Chap 5
+
+NAVIGATING BETWEEN PAGES
+    - Use Next.js <Link/> component to allow client side navigation with JavaScript
+    - Works like an <a> tag, but it instead of using <a>, <Link> is used
+
+SHOWING ACTIVE LINKS
+    - To show active link, there is a React hook named usePathname()
+    - Since it is a React hook, we need to turn nav-links.tsx into a Client Component
+    - To do this, add 'use client' directive on top of the tsx
+    - For example:
+        --> 'use client';
+
+            // import code
+
+            import { usePathname } from 'next/navigation';
+
+    - Then create a variable pathname
+        --> // import code
+
+            // links array
+            
+            export default function NavLinks(){
+                const pathname = usePathname();
+
+                // return code                
+            }
+
+    - Then to toggle css styles according to state value, import clsx 
+        --> // import code
+            import { usePathname } from 'next/navigation';
+            import clsx from 'clsx'
+
+            // links array
+
+            export default function NavLinks(){
+                const pathname = usePathname();
+
+                // return code                
+            }
+
+    - Then check the condition if pathname (or the current URL path) is equal to the link.href
+        --> return (
+                {links.map(link) => {
+                    const LinkIcon = link.icon;
+                    <Link
+                        key={link.name}
+                        href={link.href}
+                        className={
+                            clsx("<some tailwind css>", {
+                                "bg-sky-100 text-blue-600" : pathname === link.href
+                            }
+                        )}
+                    >
+                    ...
+                }}
+            )
+            
